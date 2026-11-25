@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online test – Přírodopis</title>
+<style>
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f4f8; color: #1e293b; margin: 0; padding: 20px; }
+  .container { max-width: 800px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+  h1 { color: #0f172a; margin-top: 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; }
+  .badge { display: inline-block; background: #2563eb; color: #fff; padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 0.9em; margin-bottom: 15px; }
+  .form-group { margin-bottom: 18px; }
+  label { display: block; font-weight: 600; margin-bottom: 6px; }
+  input[type="text"], textarea { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1em; box-sizing: border-box; font-family: inherit; }
+  input[type="text"]:focus, textarea:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.15); }
+  .row { display: flex; gap: 15px; flex-wrap: wrap; }
+  .row .form-group { flex: 1; min-width: 200px; }
+  .question-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; margin-bottom: 18px; }
+  .q-header { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; color: #0f172a; }
+  .q-pts { color: #64748b; font-size: 0.9em; white-space: nowrap; margin-left: 10px; }
+  .radio-option { display: flex; align-items: flex-start; gap: 10px; padding: 8px 10px; background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 8px; cursor: pointer; }
+  .radio-option:hover { background: #eff6ff; border-color: #93c5fd; }
+  .radio-option input { margin-top: 4px; }
+  button { background: #2563eb; color: #fff; border: none; padding: 12px 24px; font-size: 1.05em; font-weight: 600; border-radius: 8px; cursor: pointer; transition: background 0.2s; }
+  button:hover { background: #1d4ed8; }
+  button.secondary { background: #475569; }
+  button.secondary:hover { background: #334155; }
+  .result-box { background: #ecfdf5; border: 2px solid #10b981; border-radius: 10px; padding: 25px; text-align: center; margin-top: 20px; }
+  .result-box h2 { color: #065f46; margin-top: 0; }
+  .big-score { font-size: 2.2em; font-weight: bold; color: #047857; margin: 10px 0; }
+  .hidden { display: none; }
+  .alert { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 15px; border-radius: 6px; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1 id="test-title">Načítání testu...</h1>
+
+  <div id="fallback-loader" class="alert hidden">
+    <p><strong>Nepodařilo se automaticky načíst soubor <code>otazky7.txt</code></strong> (pravděpodobně otevíráte test přímo z disku bez serveru).</p>
+    <p>Vyberte prosím soubor <code>otazky7.txt</code> ručně:</p>
+    <input type="file" id="manual-file" accept=".txt">
+  </div>
+
+  <div id="intro-section" class="hidden">
+    <p>Vyplň své údaje a klikni na tlačítko pro spuštění testu. Systém ti automaticky přidělí variantu zadání.</p>
+    <div class="row">
+      <div class="form-group">
+        <label for="jmeno">Jméno:</label>
+        <input type="text" id="jmeno" placeholder="Např. Jan" required>
+      </div>
+      <div class="form-group">
+        <label for="prijmeni">Příjmení:</label>
+        <input type="text" id="prijmeni" placeholder="Např. Novák" required>
+      </div>
+      <div class="form-group">
+        <label for="trida">Třída:</label>
+        <input type="text" id="trida" placeholder="Např. 9.A" value="9." required>
+      </div>
+    </div>
+    <button onclick="startTest()">Spustit test</button>
+  </div>
+
+  <div id="quiz-section" class="hidden">
+    <div class="badge" id="variant-badge">Varianta</div>
+    <div id="questions-container"></div>
+    <button onclick="submitTest()">Dokončit test a uložit výsledek</button>
+  </div>
+
+  <div id="result-section" class="hidden">
+    <div class="result-box">
+      <h2>Test byl úspěšně dokončen!</h2>
+      <p id="res-student" style="font-size: 1.2em; font-weight: bold;"></p>
+      <div class="big-score" id="res-auto-score"></div>
+      <p id="res-info" style="color: #334155;"></p>
+      <p style="font-size: 0.9em; color: #475569; margin-top: 15px;">
+        Výsledkový soubor byl automaticky stažen do složky <strong>Stažené soubory</strong>.<br>
+        Nahraj ho prosím do společného úložiště (nebo odevzdávárny) podle pokynů učitele.
+      </p>
+      <button class="secondary" style="margin-top: 10px;" onclick="downloadAgain()">Stáhnout soubor znovu</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const SECRET_SALT = "PRIRODOPIS_9_2026_TAJNY_KLIC";
+let parsedData = { title: "Test", variants: {} };
+let activeVariant = "A";
+let activeQuestions = [];
+let lastGeneratedBlob = null;
+let lastFileName = "vysledek.json";
+
+function computeHash(str) {
+  let h1 = 0xdeadbeef, h2 = 0x41c6ce57;
+  for (let i = 0, ch; i < str.length; i++) {
+    ch = str.charCodeAt(i);
+    h1 = Math.imul(h1 ^ ch, 2654435761);
+    h2 = Math.imul(h2 ^ ch, 1597334677);
+  }
+  h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+  h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+  return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(16).toUpperCase();
+}
+
+function parseQuestionsTxt(text) {
+  const lines = text.split(/\r?\n/);
+  let currentVar = null;
+  parsedData = { title: "Test z přírodopisu", variants: {} };
+
+  for (let rawLine of lines) {
+    let line = rawLine.trim();
+    if (!line || line.startsWith("#")) continue;
+
+    if (line.toUpperCase().startsWith("NADPIS;")) {
+      parsedData.title = line.split(";").slice(1).join(";").trim();
+      continue;
+    }
+
+    const varMatch = line.match(/^\[VARIANTA\s+([A-Z0-9]+)\]$/i);
+    if (varMatch) {
+      currentVar = varMatch[1].toUpperCase();
+      parsedData.variants[currentVar] = [];
+      continue;
+    }
+
+    if (currentVar) {
+      const parts = line.split(";").map(p => p.trim()).filter(p => p !== "");
+      if (parts.length >= 3) {
+        const type = parts[0].toUpperCase();
+        const points = parseFloat(parts[1]) || 1;
+        const prompt = parts[2];
+        const extras = parts.slice(3);
+
+        if (type === "ABCD") {
+          let options = [];
+          let correctText = "";
+          extras.forEach(opt => {
+            if (opt.endsWith("*")) {
+              const clean = opt.slice(0, -1).trim();
+              options.push(clean);
+              correctText = clean;
+            } else {
+              options.push(opt);
+            }
+          });
+          parsedData.variants[currentVar].push({ type, points, prompt, options, correctText });
+        } else if (type === "DOPLNIT") {
+          parsedData.variants[currentVar].push({ type, points, prompt, accepted: extras });
+        } else if (type === "OTEVRENA") {
+          parsedData.variants[currentVar].push({ type, points, prompt });
+        }
+      }
+    }
+  }
+
+  document.getElementById("test-title").textContent = parsedData.title;
+  document.getElementById("fallback-loader").classList.add("hidden");
+  document.getElementById("intro-section").classList.remove("hidden");
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  fetch("otazky7.txt")
+    .then(res => {
+      if (!res.ok) throw new Error("Nelze načíst");
+      return res.text();
+    })
+    .then(txt => parseQuestionsTxt(txt))
+    .catch(() => {
+      document.getElementById("test-title").textContent = "Přírodopis – Online test";
+      document.getElementById("fallback-loader").classList.remove("hidden");
+    });
+
+  document.getElementById("manual-file").addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => parseQuestionsTxt(ev.target.result);
+    reader.readAsText(file, "UTF-8");
+  });
+});
+
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function startTest() {
+  const jmeno = document.getElementById("jmeno").value.trim();
+  const prijmeni = document.getElementById("prijmeni").value.trim();
+  const trida = document.getElementById("trida").value.trim();
+
+  if (!jmeno || !prijmeni || !trida) {
+    alert("Vyplň prosím jméno, příjmení i třídu.");
+    return;
+  }
+
+  const varKeys = Object.keys(parsedData.variants);
+  if (varKeys.length === 0) {
+    alert("V souboru s otázkami nebyly nalezeny žádné varianty.");
+    return;
+  }
+
+  activeVariant = varKeys[Math.floor(Math.random() * varKeys.length)];
+  activeQuestions = parsedData.variants[activeVariant].map(q => {
+    if (q.type === "ABCD") {
+      return { ...q, shuffledOptions: shuffleArray(q.options) };
+    }
+    return { ...q };
+  });
+
+  document.getElementById("variant-badge").textContent = "Varianta " + activeVariant;
+  const container = document.getElementById("questions-container");
+  container.innerHTML = "";
+
+  activeQuestions.forEach((q, idx) => {
+    const card = document.createElement("div");
+    card.className = "question-card";
+    let html = `<div class="q-header"><span>${idx + 1}. ${q.prompt}</span><span class="q-pts">(${q.points} b.)</span></div>`;
+
+    if (q.type === "ABCD") {
+      q.shuffledOptions.forEach((opt, oIdx) => {
+        html += `<label class="radio-option"><input type="radio" name="q_${idx}" value="${opt.replace(/"/g, '&quot;')}"> <span>${opt}</span></label>`;
+      });
+    } else if (q.type === "DOPLNIT") {
+      html += `<input type="text" id="q_${idx}" placeholder="Napiš krátkou odpověď...">`;
+    } else if (q.type === "OTEVRENA") {
+      html += `<textarea id="q_${idx}" rows="3" placeholder="Napiš odpověď vlastními slovy..."></textarea>`;
+    }
+
+    card.innerHTML = html;
+    container.appendChild(card);
+  });
+
+  document.getElementById("intro-section").classList.add("hidden");
+  document.getElementById("quiz-section").classList.remove("hidden");
+}
+
+function normalizeStr(s) {
+  return s.toLowerCase().trim().replace(/\s+/g, " ");
+}
+
+function submitTest() {
+  if (!confirm("Opravdu chceš test ukončit a uložit odpovědi?")) return;
+
+  const jmeno = document.getElementById("jmeno").value.trim();
+  const prijmeni = document.getElementById("prijmeni").value.trim();
+  const trida = document.getElementById("trida").value.trim();
+  const timestamp = new Date().toLocaleString("cs-CZ");
+
+  let autoPoints = 0;
+  let maxAutoPoints = 0;
+  let maxTotalPoints = 0;
+  const answersRecord = [];
+
+  activeQuestions.forEach((q, idx) => {
+    maxTotalPoints += q.points;
+    let studentAns = "";
+    let earned = 0;
+
+    if (q.type === "ABCD") {
+      maxAutoPoints += q.points;
+      const checked = document.querySelector(`input[name="q_${idx}"]:checked`);
+      studentAns = checked ? checked.value : "";
+      if (studentAns && normalizeStr(studentAns) === normalizeStr(q.correctText)) {
+        earned = q.points;
+      }
+      autoPoints += earned;
+    } else if (q.type === "DOPLNIT") {
+      maxAutoPoints += q.points;
+      studentAns = document.getElementById(`q_${idx}`).value.trim();
+      const normAns = normalizeStr(studentAns);
+      if (normAns && q.accepted.some(acc => normalizeStr(acc) === normAns)) {
+        earned = q.points;
+      }
+      autoPoints += earned;
+    } else if (q.type === "OTEVRENA") {
+      studentAns = document.getElementById(`q_${idx}`).value.trim();
+      earned = null; // hodnotí učitel
+    }
+
+    answersRecord.push({
+      cislo: idx + 1,
+      typ: q.type,
+      otazka: q.prompt,
+      maxBody: q.points,
+      odpovedZaka: studentAns,
+      spravnaOdpoved: q.type === "ABCD" ? q.correctText : (q.type === "DOPLNIT" ? q.accepted.join(" / ") : "Hodnotí učitel"),
+      body: earned
+    });
+  });
+
+  const payload = {
+    test: parsedData.title,
+    jmeno,
+    prijmeni,
+    trida,
+    varianta: activeVariant,
+    casOdevzdani: timestamp,
+    autoBody: autoPoints,
+    maxAutoBody: maxAutoPoints,
+    maxCelkemBody: maxTotalPoints,
+    odpovedi: answersRecord
+  };
+
+  const signature = computeHash(JSON.stringify(payload) + SECRET_SALT);
+  const finalObject = { ...payload, kontrolniKod: signature };
+
+  const jsonString = JSON.stringify(finalObject, null, 2);
+  lastGeneratedBlob = new Blob([jsonString], { type: "application/json;charset=utf-8" });
+
+  const safeClass = trida.replace(/[^a-zA-Z0-9]/g, "");
+  const safeLast = prijmeni.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9]/g, "");
+  const safeFirst = jmeno.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9]/g, "");
+  lastFileName = `${safeClass}_${safeLast}_${safeFirst}_Var${activeVariant}.json`;
+
+  triggerDownload();
+
+  document.getElementById("quiz-section").classList.add("hidden");
+  document.getElementById("result-section").classList.remove("hidden");
+  document.getElementById("res-student").textContent = `${jmeno} ${prijmeni} (${trida}) – Varianta ${activeVariant}`;
+  document.getElementById("res-auto-score").textContent = `Uzavřené otázky: ${autoPoints} / ${maxAutoPoints} b.`;
+  document.getElementById("res-info").textContent = `Otevřené otázky (zbývajících ${maxTotalPoints - maxAutoPoints} b.) oboduje učitel. Kontrolní kód: ${signature}`;
+}
+
+function triggerDownload() {
+  if (!lastGeneratedBlob) return;
+  const url = URL.createObjectURL(lastGeneratedBlob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = lastFileName;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function downloadAgain() {
+  triggerDownload();
+}
+</script>
+</body>
+</html>

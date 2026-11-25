@@ -1,0 +1,23 @@
+NADPIS; Přírodopis 6. ročník – Od planety Země po prvoky
+
+[VARIANTA A]
+ABCD; 1; Který zemský obal tvoří veškeré vodstvo na Zemi?; atmosféra; hydrosféra *; litosféra; pedosféra
+ABCD; 1; Čím se liší bakteriální buňka od buňky rostlinné a živočišné?; Nemá pravé jádro ohraničené blánou *; Nemá žádnou dědičnou informaci; Je vždy mnohem větší
+DOPLNIT; 1; Zelené barvivo v sinicích a rostlinách, které umožňuje fotosyntézu, se nazývá:; chlorofyl
+DOPLNIT; 1; Prvok, který se pohybuje pomocí panožek a pohlcuje jimi potravu, se jmenuje:; měňavka; měňavka velká
+DOPLNIT; 1; Pevný ochranný obal, který si prvoci vytvářejí při vyschnutí nebo mrazu, se nazývá:; cysta
+OTEVRENA; 2; Vyjmenuj alespoň 3 základní podmínky, které umožnily vznik života na Zemi.
+OTEVRENA; 2; Napiš 3 buněčné organely společné pro rostlinnou i živočišnou buňku a uveď funkci jedné z nich.
+OTEVRENA; 2; Proč je trepka velká důležitým ukazatelem (bioindikátorem) a kde v přírodě žije?
+OTEVRENA; 2; Uveď jeden příklad užitečných bakterií a jeden příklad onemocnění způsobeného bakteriemi.
+
+[VARIANTA B]
+ABCD; 1; Proč neřadíme viry mezi plnohodnotné buněčné organismy?; Nemají vlastní buňku a množí se jen uvnitř hostitele *; Jsou viditelné pouhým okem; Živí se pouze fotosyntézou
+ABCD; 1; Který prvok se na světle živí fotosyntézou jako rostlina a ve tmě jako živočich?; trepka velká; krásnoočko zelené *; měňavka velká
+DOPLNIT; 1; Sinice se v létě v rybnících přemnožují a vytvářejí na hladině tzv. vodní:; květ
+DOPLNIT; 1; Organela v těle trepky, která vylučuje přebytečnou vodu z buňky, je vakuola:; stažitelná; pulzující
+DOPLNIT; 1; Komár rodu Anopheles přenáší parazitického prvoka zimničku, který způsobuje nemoc:; malárie; malárii
+OTEVRENA; 2; Vyjmenuj alespoň 4 základní projevy (znaky) živých organismů, kterými se liší od neživé přírody.
+OTEVRENA; 2; Které dvě části najdeme v rostlinné buňce navíc oproti buňce živočišné?
+OTEVRENA; 2; Vysvětli rozdíl mezi autotrofními a heterotrofními organismy a uveď ke každému 1 příklad.
+OTEVRENA; 2; Jaký význam mají v přírodě rozkladači (saprofytické bakterie)?

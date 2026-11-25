@@ -1,0 +1,25 @@
+NADPIS; Přírodopis 7. ročník – Strunatci až ptáci
+
+[VARIANTA A]
+ABCD; 1; Který znak NEPATŘÍ mezi společné znaky všech strunatců (alespoň v zárodečném vývoji)?; Struna hřbetní; Nervová trubice na hřbetní straně; Žaberní štěrbiny; Vápenatá schránka na povrchu těla *
+ABCD; 1; Čím se liší kostra paryb (např. žraloka) od kostry kostnatých ryb (např. kapra)?; Paryby mají kostru chrupavčitou *; Paryby mají kostru zpevněnou křemíkem; Paryby nemají žádnou vnitřní kostru
+DOPLNIT; 1; Smyslový (proudový) orgán ryb, kterým vnímají proudění, tlak a otřesy vody, se nazývá:; postranní čára
+DOPLNIT; 1; Larva žab (pulec) dýchá žábrami, zatímco dospělá žába dýchá plícemi a:; kůží
+DOPLNIT; 1; Živočichové, jejichž tělesná teplota závisí na teplotě okolního prostředí (ryby, obojživelníci, plazi), se odborně nazývají:; studenokrevní; ektotermní
+OTEVRENA; 2; Jaký je hlavní rozdíl ve stavbě kůže obojživelníků a plazů a proč plazi nejsou při rozmnožování vázáni na vodu?
+OTEVRENA; 2; Jak poznáš naši jedovatou zmiji obecnou od nejedovaté užovky obojkové? Uveď alespoň 2 rozdíly.
+OTEVRENA; 2; Vyjmenuj alespoň 4 přizpůsobení kostry a těla ptáků k letu.
+OTEVRENA; 2; Jaký je rozdíl mezi obrysovým peřím a prachovým peřím ptáků (stavba a funkce)?
+OTEVRENA; 2; Co znamená rozdělení ptáků na „krmivé“ a „nekrmivé“? Uveď ke každé skupině jeden příklad.
+
+[VARIANTA B]
+ABCD; 1; Která z následujících ryb patří mezi dravé ryby?; Štika obecná *; Kapr obecný; Lín obecný; Cejn velký
+ABCD; 1; Jak se nazývá společný vývod trávicí, vylučovací a rozmnožovací soustavy u obojživelníků, plazů a ptáků?; Kloaka *; Plynový měchýř; Skřele; Slepé střevo
+DOPLNIT; 1; Osová opora těla obratlovců složená z obratlů, která chrání míchu, se nazývá:; páteř
+DOPLNIT; 1; Mezi naše ocasaté obojživelníky patří například mlok skvrnitý a:; čolek; čolek obecný; čolek horský
+DOPLNIT; 1; Který řád plazů zahrnuje současně ještěry i hady?; šupinatí
+OTEVRENA; 2; Proč musí žraloci (paryby) neustále plavat a jak se liší jejich oplození od většiny kostnatých ryb?
+OTEVRENA; 2; Jakým způsobem se pohybují a loví kořist hadi, když nemají končetiny?
+OTEVRENA; 2; Jak dýchají ptáci při letu a jakou roli v tom hrají tzv. „vzdušné vaky“?
+OTEVRENA; 2; Popiš tvar zobáku a nohou u dravců (např. káně) a u vrubozobých ptáků (např. kachna).
+OTEVRENA; 2; Jaký je rozdíl mezi ptáky stálými, přelétavými a tažnými? Uveď ke každé skupině příklad.
