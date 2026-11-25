@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Učitelská čtečka – Vyhodnocení testů</title>
+<style>
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f1f5f9; color: #1e293b; margin: 0; padding: 20px; }
+  .container { max-width: 1100px; margin: 0 auto; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+  h1 { margin-top: 0; color: #0f172a; }
+  .dropzone { border: 2px dashed #3b82f6; background: #eff6ff; border-radius: 10px; padding: 30px; text-align: center; cursor: pointer; margin-bottom: 20px; transition: background 0.2s; }
+  .dropzone:hover, .dropzone.dragover { background: #dbeafe; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.95em; }
+  th, td { border: 1px solid #cbd5e1; padding: 10px; text-align: left; vertical-align: top; }
+  th { background: #f8fafc; font-weight: 600; }
+  .status-ok { color: #059669; font-weight: bold; }
+  .status-bad { color: #dc2626; font-weight: bold; background: #fef2f2; padding: 2px 6px; border-radius: 4px; }
+  .open-q-box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 8px; border-radius: 6px; margin-bottom: 6px; }
+  .open-q-title { font-weight: 600; font-size: 0.88em; color: #475569; }
+  .open-q-ans { margin: 4px 0; color: #0f172a; }
+  select.pts-select { padding: 4px 8px; border-radius: 4px; border: 1px solid #94a3b8; font-weight: bold; }
+  .grade-badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-weight: bold; font-size: 1.1em; color: #fff; }
+  .g-1 { background: #10b981; }
+  .g-2 { background: #3b82f6; }
+  .g-3 { background: #f59e0b; }
+  .g-4 { background: #f97316; }
+  .g-5 { background: #ef4444; }
+  button { background: #059669; color: #fff; border: none; padding: 10px 20px; font-size: 1em; font-weight: 600; border-radius: 8px; cursor: pointer; }
+  button:hover { background: #047857; }
+  .toolbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
+  .scale-info { font-size: 0.85em; color: #64748b; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Učitelská čtečka a vyhodnocení testů</h1>
+  <div class="dropzone" id="dropzone" onclick="document.getElementById('file-input').click()">
+    <p style="font-size: 1.1em; margin: 0 0 8px 0;"><strong>Přetáhni sem všechny stažené soubory (.json) od žáků</strong></p>
+    <p style="margin: 0; color: #475569;">nebo klikni sem a vyber je ze složky (můžeš označit celou třídu najednou)</p>
+    <input type="file" id="file-input" multiple accept=".json" style="display: none;">
+  </div>
+
+  <div id="results-area" style="display: none;">
+    <div class="toolbar">
+      <div class="scale-info">
+        <strong>Stupnice známkování:</strong> 100–88 % = 1 | 87–73 % = 2 | 72–50 % = 3 | 49–30 % = 4 | 29–0 % = 5
+      </div>
+      <button onclick="exportCSV()">Stáhnout tabulku do Excelu (.csv)</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Žák a třída</th>
+          <th>Var.</th>
+          <th>Kontrola</th>
+          <th>Uzavřené b.</th>
+          <th>Otevřené otázky (doplň body)</th>
+          <th>Celkem</th>
+          <th>Známka</th>
+        </tr>
+      </thead>
+      <tbody id="students-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+const SECRET_SALT = "PRIRODOPIS_9_2026_TAJNY_KLIC";
+let studentsData = [];
+
+function computeHash(str) {
+  let h1 = 0xdeadbeef, h2 = 0x41c6ce57;
+  for (let i = 0, ch; i < str.length; i++) {
+    ch = str.charCodeAt(i);
+    h1 = Math.imul(h1 ^ ch, 2654435761);
+    h2 = Math.imul(h2 ^ ch, 1597334677);
+  }
+  h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+  h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+  return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(16).toUpperCase();
+}
+
+const dropzone = document.getElementById("dropzone");
+const fileInput = document.getElementById("file-input");
+
+dropzone.addEventListener("dragover", (e) => { e.preventDefault(); dropzone.classList.add("dragover"); });
+dropzone.addEventListener("dragleave", () => dropzone.classList.remove("dragover"));
+dropzone.addEventListener("drop", (e) => {
+  e.preventDefault();
+  dropzone.classList.remove("dragover");
+  handleFiles(e.dataTransfer.files);
+});
+fileInput.addEventListener("change", (e) => handleFiles(e.target.files));
+
+function handleFiles(files) {
+  Array.from(files).forEach(file => {
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      try {
+        const obj = JSON.parse(ev.target.result);
+        const { kontrolniKod, ...payload } = obj;
+        const expected = computeHash(JSON.stringify(payload) + SECRET_SALT);
+        const isValid = (kontrolniKod === expected);
+
+        const openQuestions = (obj.odpovedi || []).filter(q => q.typ === "OTEVRENA").map(q => ({
+          ...q,
+          teacherPoints: 0
+        }));
+
+        studentsData.push({
+          ...obj,
+          isValid,
+          openQuestions
+        });
+
+        studentsData.sort((a, b) => (a.prijmeni || "").localeCompare(b.prijmeni || "", "cs"));
+        renderTable();
+      } catch (err) {
+        alert("Soubor " + file.name + " se nepodařilo načíst (chybný formát).");
+      }
+    };
+    reader.readAsText(file, "UTF-8");
+  });
+}
+
+function calcGrade(earned, max) {
+  if (!max || max <= 0) return 1;
+  const pct = (earned / max) * 100;
+  if (pct >= 88) return 1;
+  if (pct >= 73) return 2;
+  if (pct >= 50) return 3;
+  if (pct >= 30) return 4;
+  return 5;
+}
+
+function updateTeacherPoints(sIdx, qIdx, val) {
+  studentsData[sIdx].openQuestions[qIdx].teacherPoints = parseFloat(val) || 0;
+  renderTable();
+}
+
+function renderTable() {
+  document.getElementById("results-area").style.display = "block";
+  const tbody = document.getElementById("students-tbody");
+  tbody.innerHTML = "";
+
+  studentsData.forEach((st, sIdx) => {
+    const openSum = st.openQuestions.reduce((acc, q) => acc + q.teacherPoints, 0);
+    const totalEarned = (st.autoBody || 0) + openSum;
+    const totalMax = st.maxCelkemBody || 12;
+    const grade = calcGrade(totalEarned, totalMax);
+
+    let openHtml = "";
+    if (st.openQuestions.length === 0) {
+      openHtml = "<span style='color:#64748b'>Žádné otevřené otázky</span>";
+    } else {
+      st.openQuestions.forEach((oq, qIdx) => {
+        let opts = "";
+        for (let p = 0; p <= oq.maxBody; p += 0.5) {
+          opts += `<option value="${p}" ${oq.teacherPoints === p ? "selected" : ""}>${p} b.</option>`;
+        }
+        openHtml += `
+          <div class="open-q-box">
+            <div class="open-q-title">${oq.cislo}. ${oq.otazka} (max ${oq.maxBody} b.)</div>
+            <div class="open-q-ans">${oq.odpovedZaka ? oq.odpovedZaka : "<em>(prázdná odpověď)</em>"}</div>
+            <div>Body: <select class="pts-select" onchange="updateTeacherPoints(${sIdx}, ${qIdx}, this.value)">${opts}</select></div>
+          </div>
+        `;
+      });
+    }
+
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td><strong>${st.prijmeni} ${st.jmeno}</strong><br><span style="color:#64748b;font-size:0.85em">${st.trida} | ${st.casOdevzdani || ""}</span></td>
+      <td><strong>${st.varianta}</strong></td>
+      <td>${st.isValid ? '<span class="status-ok">✔ OK</span>' : '<span class="status-bad">✖ UPRAVENO!</span>'}</td>
+      <td>${st.autoBody} / ${st.maxAutoBody} b.</td>
+      <td>${openHtml}</td>
+      <td><strong>${totalEarned} / ${totalMax} b.</strong><br><span style="font-size:0.85em;color:#64748b">(${Math.round((totalEarned/totalMax)*100)} %)</span></td>
+      <td><span class="grade-badge g-${grade}">${grade}</span></td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function exportCSV() {
+  let csv = "\uFEFFPříjmení;Jméno;Třída;Varianta;Kontrola;Uzavřené body;Otevřené body;Celkem bodů;Max bodů;Úspěšnost %;Známka\n";
+  studentsData.forEach(st => {
+    const openSum = st.openQuestions.reduce((acc, q) => acc + q.teacherPoints, 0);
+    const totalEarned = (st.autoBody || 0) + openSum;
+    const totalMax = st.maxCelkemBody || 12;
+    const pct = Math.round((totalEarned / totalMax) * 100);
+    const grade = calcGrade(totalEarned, totalMax);
+    const check = st.isValid ? "OK" : "UPRAVENO";
+    csv += `${st.prijmeni};${st.jmeno};${st.trida};${st.varianta};${check};${st.autoBody};${openSum};${totalEarned};${totalMax};${pct}%;${grade}\n`;
+  });
+
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "vysledky-testu-prirodopis.csv";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>

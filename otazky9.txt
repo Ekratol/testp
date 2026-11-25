@@ -1,0 +1,23 @@
+NADPIS; Geologické vědy a prvky (9. ročník)
+
+[VARIANTA A]
+ABCD; 1; Které tvrzení o nerostech a horninách je správné?; Hornina má rovnorodé složení a dá se zapsat jedním chemickým vzorcem.; Nerost (minerál) je rovnorodá přírodnina, kterou tvoří jeden prvek nebo sloučenina. *; Prvky mezi nerosty nepatří, protože se nevyskytují v přírodě samostatně.
+DOPLNIT; 1; Která geologická věda zkoumá zkameněliny a vývoj života na Zemi?; paleontologie
+DOPLNIT; 1; Která geologická věda zkoumá vznik, složení a vlastnosti nerostů?; mineralogie
+DOPLNIT; 1; Nejtvrdší nerost na Mohsově stupnici (stupeň 10), který tvoří čistý uhlík:; diamant
+DOPLNIT; 1; Žlutý nekovový nerost, který vzniká v okolí sopek a hoří modrým plamenem:; síra; sira
+DOPLNIT; 1; Červenohnědý kov, který se v přírodě vyskytuje vzácně ryzí a je výborným vodičem elektřiny:; měď; med
+OTEVRENA; 2; Co je to „vryp nerostu“ a jak ho v praxi zjišťujeme?
+OTEVRENA; 2; Diamant i tuha (grafit) jsou tvořeny stejným prvkem – uhlíkem. Vysvětli, proč má každý z nich úplně jiné vlastnosti (tvrdost, vzhled).
+OTEVRENA; 2; Kde v praxi lidé využívají tuhu (grafit) nebo síru? Uveď alespoň dva konkrétní příklady.
+
+[VARIANTA B]
+ABCD; 1; Které tvrzení o prvcích v mineralogii je správné?; Mezi nerosty ze skupiny prvků patří například zlato, diamant a síra. *; Všechny prvky v přírodě jsou tvrdší než sklo.; Prvky jsou vždy složeny ze dvou a více různých chemických značek.
+DOPLNIT; 1; Která geologická věda zkoumá vyhledávání zásob nerostných surovin (ložisek)?; ložisková geologie; loziskova geologie
+DOPLNIT; 1; Která geologická věda zkoumá vznik, složení a přeměny hornin?; petrologie; petrografie
+DOPLNIT; 1; Velmi měkký šedočerný nerost (stupeň 1–2), který otírá prsty a píše na papír:; tuha; grafit
+DOPLNIT; 1; Vzácný ušlechtilý kov žluté barvy, který na vzduchu nekoroduje (nerezaví):; zlato
+DOPLNIT; 1; Vzácný kov bílé barvy, který časem na vzduchu černá (oxiduje), využívá se ve šperkařství i elektronice:; stříbro; stribro
+OTEVRENA; 2; Proč samotná barva nerostu nestačí k jeho spolehlivému určení?
+OTEVRENA; 2; Co znamená údaj „24 karátů“ u zlata a proč se běžné šperky vyrábějí spíše ze 14karátového zlata?
+OTEVRENA; 2; Nalezl jsi nerost, do kterého rýpneš nehtem (nehet má tvrdost 2,5). Co to znamená pro jeho zařazení v Mohsově stupnici tvrdosti a o který prvek by mohlo jít?
