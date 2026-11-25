@@ -1,0 +1,23 @@
+NADPIS; Čtvrtletní písemná práce – Etologie, tkáně, opěrná a svalová soustava (8. ročník)
+
+[VARIANTA A]
+ABCD; 1; Co zkoumá věda zvaná etologie?; Chování živočichů v přirozeném prostředí *; Stavbu a funkci lidských tkání; Vývoj kostry obratlovců
+ABCD; 1; Která z následujících tkání patří mezi pojiva?; Epitelová tkáň; Chrupavka *; Nervová tkáň
+DOPLNIT; 1; Základní stavební a funkční buňka nervové tkáně se nazývá:; neuron
+DOPLNIT; 1; Vazivová blána na povrchu kosti, která zajišťuje její růst do šířky, se nazývá:; okostice; periost
+DOPLNIT; 1; Počet krčních obratlů u člověka je:; 7; sedm
+DOPLNIT; 1; Svalová tkáň tvořící stěny vnitřních orgánů (např. žaludku), kterou neovládáme vůlí, je svalovina:; hladká
+OTEVRENA; 2; Vysvětli pojem „vtištění“ (imprinting) u mláďat a uveď jednoho ze zakladatelů etologie.
+OTEVRENA; 2; Popiš stavbu kloubu (hlavní části) a vysvětli, proč se poraněná kloubní chrupavka hojí velmi pomalu.
+OTEVRENA; 2; Co jsou to antagonistické (protichůdné) svaly? Vysvětli jejich spolupráci na příkladu ohnutí paže v lokti.
+
+[VARIANTA B]
+ABCD; 1; Který z následujících příkladů představuje vrozené (instinktivní) chování?; Pes sedající na povel majitele; Sací reflex mláďat savců *; Šimpanz používající klacík k lovu termitů
+ABCD; 1; Která žebra se upínají chrupavkou přímo na hrudní kost?; Pravá žebra (7 párů) *; Nepravá žebra (3 páry); Volná žebra (2 páry)
+DOPLNIT; 1; Bílkovina, která dodává kostem pružnost, se nazývá:; kolagen; ossein
+DOPLNIT; 1; Růst kosti do délky umožňují u dětí a dospívajících:; růstové chrupavky; růstová chrupavka
+DOPLNIT; 1; Srdeční svalovina se odborně nazývá:; myokard
+DOPLNIT; 1; Pevný vazivový útvar, kterým se kosterní sval připojuje ke kosti, se nazývá:; šlacha
+OTEVRENA; 2; Proč včely dělnice předvádějí v úlu tzv. „včelí tanec“ a jaký je rozdíl mezi vrozeným a naučeným chováním?
+OTEVRENA; 2; Vyjmenuj 4 základní typy lidských tkání a uveď hlavní funkci epitelové tkáně.
+OTEVRENA; 2; Co způsobuje tzv. „svalovou horečku“ po velké fyzické námaze a proč je důležité posilovat zádové i břišní svaly?
