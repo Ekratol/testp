@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Školní Testy - Rozcestník</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .menu-container {
+            max-width: 500px;
+            width: 100%;
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        h1 {
+            color: #1a2a3a;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+        p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .grid-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .menu-btn {
+            display: block;
+            padding: 18px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .menu-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .btn-6 { background-color: #3498db; }
+        .btn-6:hover { background-color: #2980b9; }
+        
+        .btn-7 { background-color: #2ecc71; }
+        .btn-7:hover { background-color: #27ae60; }
+        
+        .btn-8 { background-color: #e67e22; }
+        .btn-8:hover { background-color: #d35400; }
+        
+        .btn-9 { background-color: #9b59b6; }
+        .btn-9:hover { background-color: #8e44ad; }
+    </style>
+</head>
+<body>
+
+<div class="menu-container">
+    <h1>Přírodopisné testy</h1>
+    <p>Vyberte si svou třídu a spusťte test</p>
+    
+    <div class="grid-menu">
+        <a href="index6.html" class="menu-btn btn-6">6. TŘÍDA</a>
+        <a href="index7.html" class="menu-btn btn-7">7. TŘÍDA</a>
+        <a href="index8.html" class="menu-btn btn-8">8. TŘÍDA</a>
+        <a href="index9.html" class="menu-btn btn-9">9. TŘÍDA</a>
+    </div>
+</div>
+
+</body>
+</html>
