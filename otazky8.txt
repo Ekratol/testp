@@ -5,7 +5,6 @@ ABCD; 1; Která biologická věda se zabývá studiem chování živočichů v p
 ABCD; 1; Kdo z těchto vědců je zakladatelem etologie a proslavil se výzkumem vtištění (imprintingu) u hus?; Konrad Lorenz *; Charles Darwin; Gregor Mendel; Jan Evangelista Purkyně
 ABCD; 1; Jak se nazývá zvláštní forma rychlého a nevratného učení mláděte krátce po vylíhnutí či narození?; Vtištění (imprinting) *; Podmíněný reflex; Vhled; Zvykání (habituace)
 ABCD; 1; Které z následujících chování je u savců typicky vrozené (instinktivní)?; Sací reflex mláděte *; Reakce psa na povel sedni; Jízda medvěda na kole; Otevírání dveří kočkou
-ABCD; 1; K čemu slouží včelí tanec v úlu?; K předání informace o směru a vzdálenosti potravy *; K zastrašení nepřátel; K výběru nové včelí královny; K zahřívání pláství v zimě
 ABCD; 1; Jak nazýváme chování, při kterém si živočich značkuje a brání své životní území?; Teritoriální chování *; Komfortní chování; Potravní chování; Mimikry
 ABCD; 1; Který vědec rozluštil dorozumívací tanec včel medonosných?; Karl von Frisch *; Nikolaas Tinbergen; Ivan Petrovič Pavlov; Robert Koch
 ABCD; 1; Co je to podmíněný reflex?; Naučená reakce na určitý podnět získaná opakováním *; Vrozená reakce na bolest; Dědičný tah ptáků na jih; Stavba pavučiny křižákem
