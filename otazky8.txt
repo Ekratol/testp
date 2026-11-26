@@ -6,25 +6,18 @@ ABCD; 1; Kdo z těchto vědců je zakladatelem etologie a proslavil se výzkumem
 ABCD; 1; Jak se nazývá zvláštní forma rychlého a nevratného učení mláděte krátce po vylíhnutí či narození?; Vtištění (imprinting) *; Podmíněný reflex; Vhled; Zvykání (habituace)
 ABCD; 1; Které z následujících chování je u savců typicky vrozené (instinktivní)?; Sací reflex mláděte *; Reakce psa na povel sedni; Jízda medvěda na kole; Otevírání dveří kočkou
 ABCD; 1; Jak nazýváme chování, při kterém si živočich značkuje a brání své životní území?; Teritoriální chování *; Komfortní chování; Potravní chování; Mimikry
-ABCD; 1; Který vědec rozluštil dorozumívací tanec včel medonosných?; Karl von Frisch *; Nikolaas Tinbergen; Ivan Petrovič Pavlov; Robert Koch
 ABCD; 1; Co je to podmíněný reflex?; Naučená reakce na určitý podnět získaná opakováním *; Vrozená reakce na bolest; Dědičný tah ptáků na jih; Stavba pavučiny křižákem
-ABCD; 1; Jak se nazývá pevný řád nadřízenosti a podřízenosti ve skupině živočichů (např. u slepic nebo vlků)?; Sociální hierarchie *; Symbióza; Teritorium; Konvergence
 ABCD; 1; Který z následujících projevů patří mezi tzv. komfortní chování živočichů?; Čištění peří nebo srsti *; Lov kořisti ve smečce; Stavba hnízda; Boj samců o samici
 ABCD; 1; Jak se nazývá soubor buněk stejného tvaru, původu a funkce v lidském těle?; Tkáň *; Orgán; Orgánová soustava; Pletivo
 ABCD; 1; Které 4 základní typy tkání rozlišujeme v lidském těle?; Epitelovou, pojivovou, svalovou a nervovou *; Krycí, vodivou, dělivou a zásobní; Kostní, chrupavčitou, vazivovou a krevní; Hladkou, příčně pruhovanou, srdeční a vazivovou
 ABCD; 1; Který typ tkáně pokrývá povrch těla a vystýlá tělní dutiny a orgány?; Epitelová tkáň *; Pojivová tkáň; Svalová tkáň; Nervová tkáň
-ABCD; 1; Mezi pojivové tkáně v lidském těle patří:; Vazivo, chrupavka, kost a krev *; Pokožka a sliznice; Hladká a srdeční svalovina; Šedá kůra mozková
-ABCD; 1; Proč se poraněná chrupavka hojí velmi pomalu?; Neobsahuje krevní cévy *; Je tvořena pouze odumřelými buňkami; Obsahuje příliš mnoho vápníku; Nemá žádné buněčné jádro
+ABCD; 1; Mezi pojivové tkáně v lidském těle patří:; Vazivo, chrupavka, kost*; Pokožka a sliznice; Hladká a srdeční svalovina; Šedá kůra mozková
 ABCD; 1; Jak se nazývá základní stavební a funkční buňka nervové tkáně?; Neuron *; Nefron; Osteocyt; Erytrocyt
-ABCD; 1; Která část neuronu vede nervový vzruch směrem od těla buňky k další buňce?; Neurit (axon) *; Dendrit; Buněčné jádro; Svalové vlákno
-ABCD; 1; Z jaké tkáně jsou tvořeny šlachy a vazy?; Z vaziva *; Z chrupavky; Z hladké svaloviny; Z vrstevnatého epitelu
 ABCD; 1; Která tkáň má schopnost se smršťovat (kontrahovat) a zajišťovat pohyb?; Svalová tkáň *; Epitelová tkáň; Chrupavčitá tkáň; Vazivová tkáň
 ABCD; 1; Kde v lidském těle najdeme řasinkový epitel?; V dýchacích cestách *; Na povrchu kůže; V kloubní jamce; Ve stěně žaludku
-ABCD; 1; Co zajišťuje růst dlouhé kosti do délky v dětství a dospívání?; Růstová chrupavka *; Okostice; Červená kostní dřeň; Kloubní maz
 ABCD; 1; Která vazivová blána pokrývá povrch kosti, je bohatě prokrvená a zajišťuje její růst do šířky?; Okostice (periost) *; Chrupavka; Kloubní pouzdro; Povázka (fascie)
 ABCD; 1; Kde v kostře dospělého člověka probíhá krvetvorba (tvorba krvinek)?; V červené kostní dřeni *; Ve žluté kostní dřeni; V okostici; V kloubní chrupavce
 ABCD; 1; Které chemické prvky dodávají kosti především její tvrdost a pevnost v tlaku?; Vápník a fosfor *; Železo a hořčík; Sodík a draslík; Jód a fluor
-ABCD; 1; Která organická látka dodává kosti pružnost?; Kolagen (ossein) *; Celulóza; Keratin; Chitin
 ABCD; 1; Z kolika obratlů se skládá lidská páteř?; 33 až 34 obratlů *; 24 obratlů; 12 obratlů; 42 až 44 obratlů
 ABCD; 1; Kolik krčních obratlů má člověk?; 7 *; 5; 12; 8
 ABCD; 1; Jak se nazývá první krční obratel, na kterém spočívá lebka?; Nosič (atlas) *; Čepovec (axis); Kost křížová; Kost klíční
@@ -39,13 +32,10 @@ ABCD; 1; Které 3 typy svalové tkáně rozlišujeme v lidském těle?; Příčn
 ABCD; 1; Který typ svalové tkáně můžeme ovládat svou vůlí?; Příčně pruhovanou (kosterní) svalovinu *; Hladkou svalovinu; Srdeční svalovinu (myokard); Svalovinu cév a střev
 ABCD; 1; Jak se nazývá hlavní dýchací sval, který odděluje dutinu hrudní od dutiny břišní?; Bránice *; Velký sval prsní; Široký sval zádový; Přímý sval břišní
 ABCD; 1; Který sval ohýbá horní končetinu v loketním kloubu?; Dvojhlavý sval pažní (biceps) *; Trojhlavý sval pažní (triceps); Deltový sval; Krejčovský sval
-ABCD; 1; Co jsou to antagonistické (protichůdné) svaly?; Dvojice svalů vykonávající opačný pohyb *; Svaly pracující vždy stejným směrem; Svaly ve stěně srdce; Ochrnuté svaly po úrazu
 ABCD; 1; Jak se nazývá nejširší střední část kosterního svalu?; Svalové bříško *; Šlacha; Povázka; Svalový snopec
-ABCD; 1; Které dvě bílkoviny tvoří stažitelná vlákna (myofibrily) ve svalové buňce?; Aktin a myozin *; Kolagen a elastin; Hemoglobin a fibrin; Keratin a melanin
 ABCD; 1; Co způsobuje tzv. svalovou horečku (bolest svalů po velké námaze)?; Hromadění kyseliny mléčné a mikrotrhlinky ve vláknech *; Nedostatek vápníku v kostech; Prasknutí šlachy; Zánět okostice
 ABCD; 1; Který sval pokrývá ramenní kloub a umožňuje upažení horní končetiny?; Deltový sval *; Trapézový sval; Lícní sval; Trojhlavý sval lýtkový
 ABCD; 1; Která šlacha je nejsilnější šlachou v lidském těle a upíná lýtkový sval k patní kosti?; Achillova šlacha *; Čéškový vaz; Hrudní šlacha; Zápěstní vaz
-ABCD; 1; Jaký typ svaloviny tvoří stěnu žaludku, střev a krevních cév?; Hladká svalovina *; Příčně pruhovaná svalovina; Srdeční svalovina; Kosterní svalovina
 ABCD; 1; Který sval se nachází na přední straně stehna a natahuje dolní končetinu v koleni?; Čtyřhlavý sval stehenní *; Dvojhlavý sval stehenní; Krejčovský sval; Velký sval hýžďový
 ABCD; 1; Jak se nazývá vazivový obal na povrchu celého kosterního svalu?; Povázka (fascie) *; Okostice; Svalové bříško; Synovie
 ABCD; 1; Který sval umožňuje otáčení hlavy a její předklon?; Zdvihač hlavy *; Žvýkací sval; Kruhový sval ústní; Podlopatkový sval
@@ -54,19 +44,12 @@ ABCD; 1; Proč je důležité posilovat hluboký stabilizační systém (zádov�
 [VARIANTA B]
 ABCD; 1; Jak se nazývá chování, se kterým se živočich již narodí a nemusí se ho učit?; Vrozené (instinktivní) chování *; Naučené chování; Podmíněný reflex; Imitace
 ABCD; 1; Který z následujících příkladů představuje naučené chování?; Šimpanz používající klacík k lovu termitů *; Pavouk tkající svou první síť; Novorozeně hledající zdroj potravy; Vlaštovka odlétající na zimu na jih
-ABCD; 1; Co zkoumal etolog Nikolaas Tinbergen?; Vrozené spouštěcí mechanismy a chování racků či koljušek *; Dědičnost hrachu setého; Krevní skupiny člověka; Stavbu buněčného jádra
-ABCD; 1; Jak se nazývá učení, při kterém živočich přestane reagovat na opakovaný neškodný podnět (např. ptáci na strašáka)?; Zvykání (habituace) *; Vtištění (imprinting); Vhled; Operantní podmiňování
 ABCD; 1; Který typ chování zahrnuje námluvy, stavbu hnízda a péči o mláďata?; Rozmnožovací a rodičovské chování *; Teritoriální chování; Komfortní chování; Agonistické chování
-ABCD; 1; Co je to vhled (učení pochopením)?; Schopnost vyřešit nový problém najednou bez předchozího zkoušení *; Opakované dráždění svalu elektrickým proudem; Následování matky kachňaty po vylíhnutí; Útěk před predátorem
 ABCD; 1; Jak se dorozumívají savci při vymezování svého teritoria nejčastěji?; Pachovými značkami (močí, výměšky žláz) *; Tancem ve vzduchu; Změnou barvy kůže; Ultrazvukem pod vodou
 ABCD; 1; Co znamená pojem „sociální chování“ živočichů?; Vzájemné vztahy a spolupráce mezi jedinci téhož druhu *; Lov jiných druhů živočichů; Přizpůsobení barvy těla okolí; Zimní spánek v noře
 ABCD; 1; Proč kukačka klade svá vejce do hnízd jiných pěvců?; Jde o vrozený hnízdní parazitismus *; Zapomněla postavit vlastní hnízdo; Neumí létat s materiálem na hnízdo; Chrání tím vejce před deštěm
-ABCD; 1; Který podnět slouží jako tzv. klíčový podnět při krmení mláďat racka stříbřitého?; Červená skvrna na zobáku rodiče *; Zpěv samce za úsvitu; Barva peří na křídlech; Velikost hnízda
 ABCD; 1; Která tkáň tvoří hlavní hmotu mozku a míchy?; Nervová tkáň *; Epitelová tkáň; Vazivová tkáň; Hladká svalovina
-ABCD; 1; Jak se nazývají krátké, bohatě větvené výběžky neuronu, které vedou vzruch směrem do těla buňky?; Dendrity *; Neurity (axony); Myofibrily; Synapse
-ABCD; 1; Který typ pojivové tkáně tvoří ušní boltec, nosní přepážku a pokrývá kloubní plochy kostí?; Chrupavka *; Kost; Vazivo; Tuková tkáň
 ABCD; 1; Která tkáň plní v lidském těle funkci tepelné izolace, mechanické ochrany orgánů a zásobárny energie?; Tuková tkáň (typ vaziva) *; Epitelová tkáň; Srdeční svalovina; Nervová tkáň
-ABCD; 1; Co je to „synapse“?; Místo funkčního spojení mezi dvěma neurony *; Spojení dvou kostí švem; Místo úponu svalu na kost; Buněčná organela v epitelu
 ABCD; 1; Která tekutá tkáň zajišťuje rozvod kyslíku, živin a obranu organismu?; Krev *; Lymfa (míza); Kloubní maz; Tkání mok
 ABCD; 1; Čím je typická epitelová tkáň?; Buňky leží těsně vedle sebe s minimem mezibuněčné hmoty *; Obsahuje velké množství minerálních solí; Má schopnost se smršťovat na polovinu délky; Tvoří ji dlouhá mnohobuněčná vlákna
 ABCD; 1; Ve stáří v kostech ubývá organických látek i vápníku. Jak se to projeví na vlastnostech kostí?; Kosti jsou křehčí a snadněji se lámou *; Kosti jsou pružnější a ohýbají se; Kosti začnou znovu růst do délky; Kosti se přemění na chrupavku
@@ -80,25 +63,20 @@ ABCD; 1; Které kosti tvoří kostru bérce (dolní končetiny pod kolenem)?; Ko
 ABCD; 1; Z jakých tří srostlých kostí vzniká kost pánevní?; Z kosti kyčelní, sedací a stydké *; Z kosti křížové, kostrční a bederní; Z kosti stehenní, holenní a lýtkové; Z lopatky, klíční kosti a hrudní kosti
 ABCD; 1; Jak se nazývají poslední dva páry žeber (11. a 12. pár), které nejsou připojeny k hrudní kosti ani k jiným žebrům?; Volná žebra *; Pravá žebra; Nepravá žebra; Křížová žebra
 ABCD; 1; Jaké zakřivení má zdravá lidská páteř při pohledu z boku?; Dvojesovité zakřivení (lordóza a kyfóza) *; Úplně rovné jako pravítko; Zakřivení do tvaru písmene C; Boční esovité zakřivení
-ABCD; 1; Co jsou to fontanely (lupínky) u novorozence?; Vazivová místa mezi nedokonale srostlými kostmi lebky *; Chrupavky v kolenním kloubu; První mléčné zuby; Výběžky hrudních obratlů
 ABCD; 1; Která kost chrání kolenní kloub zepředu?; Čéška *; Kost lýtková; Kost patní; Kost klíční
 ABCD; 1; Který typ svalové tkáně tvoří stěnu srdce (myokard)?; Srdeční svalovina *; Hladká svalovina; Kosterní svalovina; Vazivová svalovina
 ABCD; 1; Jak se sval připojuje ke kosti?; Pomocí šlachy *; Pomocí okostice; Pomocí chrupavky; Pomocí kloubního mazu
 ABCD; 1; Který sval natahuje horní končetinu v loketním kloubu?; Trojhlavý sval pažní (triceps) *; Dvojhlavý sval pažní (biceps); Deltový sval; Velký sval prsní
-ABCD; 1; Jak se nazývají svaly, které při pohybu spolupracují ve stejném směru (pomáhají si)?; Synergisté *; Antagonisté; Extensory; Flexory
 ABCD; 1; Který sval umožňuje úsměv, mračení a další výrazy obličeje?; Mimické svaly *; Žvýkací svaly; Zdvihač hlavy; Trapézový sval
 ABCD; 1; Co je základním zdrojem energie pro práci svalů?; Glukóza a glykogen (štěpené za vzniku ATP) *; Vápník a fosfor; Vitamín D; Chlorid sodný
 ABCD; 1; Který mohutný sval tvoří hýždě a umožňuje vzpřímený postoj a chůzi do schodů?; Velký sval hýžďový *; Krejčovský sval; Široký sval zádový; Přímý sval břišní
-ABCD; 1; Proč se srdeční svalovina (myokard) na rozdíl od kosterních svalů běžně neunaví?; Má bohaté cévní zásobení a střídá krátký stah s fází odpočinku *; Není tvořena bílkovinami; Nevyužívá ke své práci kyslík; Je řízena pouze vědomím člověka
 ABCD; 1; Jak se nazývá největší sval na přední straně hrudníku, který připažuje a předpažuje horní končetinu?; Velký sval prsní *; Trapézový sval; Bránice; Mezižeberní sval
 ABCD; 1; Který sval má tvar kápě, nachází se v horní části zad a šíje a zvedá ramena?; Trapézový sval *; Široký sval zádový; Deltový sval; Dvojhlavý sval stehenní
 ABCD; 1; Co je to svalový tonus (napětí)?; Trvalé mírné napětí svalů v klidu udržující držení těla *; Křeč při nedostatku hořčíku; Úplné ochabnutí svalu ve spánku; Natržení svalového vlákna
 ABCD; 1; Který sval je nejdelším svalem v lidském těle (táhne se šikmo přes stehno)?; Krejčovský sval *; Trojhlavý sval lýtkový; Velký sval hýžďový; Přímý sval břišní
 ABCD; 1; Jaký je hlavní rozdíl v řízení hladké a příčně pruhované svaloviny?; Hladkou neovládáme vůlí, příčně pruhovanou ovládáme vůlí *; Hladkou ovládáme vůlí, příčně pruhovanou neovládáme vůlí; Obě ovládáme vědomě vůlí; Ani jednu neovládáme vůlí
 ABCD; 1; Který sval na zadní straně bérce se upíná Achillovou šlachou k patní kosti a umožňuje postavit se na špičky?; Trojhlavý sval lýtkový *; Čtyřhlavý sval stehenní; Přední sval holenní; Krejčovský sval
-ABCD; 1; Co se děje se svalem při izometrickém stahu (např. při držení těžké tašky v jedné poloze)?; Zvyšuje se napětí svalu, ale jeho délka se nemění *; Sval se zkracuje a pohybuje kostí; Sval se natahuje a uvolňuje; Sval přestává spotřebovávat kyslík
 ABCD; 1; Které svaly pomáhají při dýchání tím, že zvedají a stahují žebra?; Mezižeberní svaly *; Mimické svaly; Žvýkací svaly; Svaly pánevního dna
-ABCD; 1; Jak se nazývá bílkovina v kosterním svalu, která váže zásobní kyslík (podobně jako hemoglobin v krvi)?; Myoglobin *; Myozin; Kolagen; Keratin
 ABCD; 1; Co znamená pojem „atrofie svalu“?; Zmenšení a ochabnutí svalu při jeho dlouhodobém nepoužívání *; Zvětšení objemu svalu tréninkem; Zánět šlachové pochvy; Natažení vazu v kotníku
 ABCD; 1; Který sval ohýbá dolní končetinu v kolenním kloubu (nachází se na zadní straně stehna)?; Dvojhlavý sval stehenní *; Čtyřhlavý sval stehenní; Velký sval prsní; Trapézový sval
 ABCD; 1; Jaký vliv má pravidelný pohyb a cvičení na kosti a svaly?; Zvyšuje hustotu kostí, prokrvení a sílu svalů *; Snižuje množství vápníku v kostech; Způsobuje řídnutí svalových vláken; Zastavuje tvorbu červených krvinek
