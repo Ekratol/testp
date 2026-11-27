@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Zkoušení - Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; background: #f4f4f9; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .question { margin-bottom: 20px; }
+        button { background: #28a745; color: white; border: none; padding: 10px 20px; font-size: 16px; border-radius: 5px; cursor: pointer; }
+        button:disabled { background: #ccc; }
+        input[type="text"] { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Znalostní test</h2>
+    <div class="question">
+        <label><strong>Tvé jméno a příjmení:</strong></label>
+        <input type="text" id="jmeno" required placeholder="Jan Novák">
+    </div>
+
+    <div id="quiz-container"></div>
+
+    <button id="submit-btn" onclick="odeslatTest()">Odeslat test</button>
+    <p id="status"></p>
+</div>
+
+<script>
+    // SEM VLOŽTE SVOU URL ADRESU Z GOOGLE APPS SCRIPTU:
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxvUn02Dl_Jhgeqc0x4VGkO5r4gBkwmz-pHUWl83mvX1xn67q3Eu1Jkp4k8MzLJ8VWN/exec";
+
+
+    // ZDE UPRAVUJTE OTÁZKY A SPRÁVNÉ ODPOVĚDI:
+    const otazky = [
+        {
+            text: "1. Jaké je hlavní město České republiky?",
+            moznosti: ["Brno", "Praha", "Ostrava"],
+            spravne: "Praha"
+        },
+        {
+            text: "2. Kolik je 7 × 8?",
+            moznosti: ["54", "56", "64"],
+            spravne: "56"
+        },
+        {
+            text: "3. Který prvek má chemickou značku O?",
+            moznosti: ["Zlato", "Kyslík", "Vodík"],
+            spravne: "Kyslík"
+        }
+    ];
+
+    // Vykreslení otázek na stránku
+    const container = document.getElementById("quiz-container");
+    otazky.forEach((q, index) => {
+        let html = `<div class="question"><p><strong>${q.text}</strong></p>`;
+        q.moznosti.forEach(moznost => {
+            html += `<label><input type="radio" name="q${index}" value="${moznost}"> ${moznost}</label><br>`;
+        });
+        html += `</div>`;
+        container.innerHTML += html;
+    });
+
+    // Vyhodnocení a odeslání
+    function odeslatTest() {
+        const jmeno = document.getElementById("jmeno").value.trim();
+        if (!jmeno) {
+            alert("Prosím, vyplň své jméno.");
+            return;
+        }
+
+        let body = 0;
+        let detaily = [];
+
+        otazky.forEach((q, index) => {
+            const vybrano = document.querySelector(`input[name="q${index}"]:checked`);
+            const odpoved = vybrano ? vybrano.value : "Nezodpovězeno";
+            if (odpoved === q.spravne) {
+                body++;
+                detaily.push(`Otázka ${index + 1}: OK (${odpoved})`);
+            } else {
+                detaily.push(`Otázka ${index + 1}: CHYBA (zvoleno: ${odpoved}, správně: ${q.spravne})`);
+            }
+        });
+
+        const procenta = Math.round((body / otazky.length) * 100);
+        const btn = document.getElementById("submit-btn");
+        const status = document.getElementById("status");
+
+        btn.disabled = true;
+        status.innerText = "Odesílám výsledky učiteli...";
+
+        const data = {
+            jmeno: jmeno,
+            skore: `${body} / ${otazky.length}`,
+            procenta: procenta,
+            detaily: detaily.join(" | ")
+        };
+
+        fetch(SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        })
+        .then(() => {
+            status.innerText = `Hotovo! Získal jsi ${body} z ${otazky.length} bodů (${procenta} %). Výsledky byly uloženy.`;
+        })
+        .catch(error => {
+            status.innerText = "Chyba při odesílání. Zkus to znovu.";
+            btn.disabled = false;
+        });
+    }
+</script>
+
+</body>
+</html>
